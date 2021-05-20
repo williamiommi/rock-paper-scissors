@@ -11,7 +11,6 @@ class MyDocument extends Document {
       <Html
         lang="en"
         style={{
-          // minHeight: "100vh",
           backgroundRepeat: "no-repeat",
           background:
             "radial-gradient(circle at center top, hsl(214, 47%, 23%), hsl(237, 49%, 15%))",
@@ -26,7 +25,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body>
+        <body className="min-h-screen">
           <Main />
           <NextScript />
         </body>
