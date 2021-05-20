@@ -2,9 +2,9 @@ import { memo } from "react";
 
 const GameSelected = ({ onSelectGame }) => {
   return (
-    <div className="flex flex-col items-center pt-10">
+    <div className="flex flex-col items-center pt-10 text-center">
       <h1 className="font-body text-grayLight text-6xl">CHOOSE YOUR GAME</h1>
-      <div className="flex justify-between items-center w-1/5 mx-auto mt-10">
+      <div className="flex flex-col justify-between items-center mx-auto mt-10 space-y-5 mb-5 desktop:flex-row desktop:space-y-0 desktop:space-x-5">
         <GameBtn
           src="/images/logo.svg"
           alt="classic game"
