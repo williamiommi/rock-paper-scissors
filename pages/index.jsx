@@ -41,8 +41,8 @@ export default function Home() {
                 : state.pointsGameBonus
             }
           />
-          <Picker />
-          {/* <RulesBtn onClick={toggleModal} /> */}
+          <Picker isClassicGame={state.isClassicGame} />
+          <RulesBtn onClick={toggleModal} />
           <Modal
             isVisible={state.isRulesOpen}
             isClassicGame={state.isClassicGame}

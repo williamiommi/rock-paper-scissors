@@ -2,7 +2,7 @@ import { memo, useMemo } from "react";
 import { LIZARD, PAPER, ROCK, SCISSORS, SPOCK } from "../lib/utils";
 
 const Token = ({ type, isSmall, onClick, className }) => {
-  const size = isSmall ? "w-36 h-36" : "w-48 h-48";
+  const size = isSmall ? "w-40 h-40" : "w-48 h-48";
   return (
     <div className={`group ${size} ${className}`}>
       <button
