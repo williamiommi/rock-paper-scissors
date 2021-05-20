@@ -16,7 +16,7 @@ const Modal = ({ isClassicGame, isVisible, onCloseModal }) => {
   return (
     <div
       data-testid="wrapper"
-      className={`${wrapperClasses} fixed transition-opacity top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto bg-grayLight desktop:bg-opacity-10`}
+      className={`${wrapperClasses} fixed transition-opacity top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto bg-grayLight desktop:bg-opacity-40`}
     >
       <div className="relative flex justify-center items-center min-h-screen w-auto desktop:max-w-md desktop:mx-auto">
         <div
