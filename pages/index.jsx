@@ -6,8 +6,8 @@ import Modal from "../components/Modal";
 import RulesBtn from "../components/RulesBtn";
 import Token from "../components/Token";
 
-
-import { LIZARD, PAPER, ROCK, SCISSORS, SPOCK } from '../lib/utils';
+import { LIZARD, PAPER, ROCK, SCISSORS, SPOCK } from "../lib/utils";
+import ScoreBoard from "../components/ScoreBoard";
 
 export default function Home() {
   const { state, dispatch } = useContext(AppContext);
@@ -19,16 +19,26 @@ export default function Home() {
   useLoadPoints();
   return (
     <div className="text-center">
+      <ScoreBoard
+        isClassicGame={!state.isClassicGame}
+        points={
+          state.isClassicGame ? state.pointsGameClassic : state.pointsGameBonus
+        }
+      />
       rock paper scissors
       <RulesBtn onClick={toggleModal} />
       <Token type={ROCK} />
-      <br /><br />
+      <br />
+      <br />
       <Token type={PAPER} />
-      <br /><br />
+      <br />
+      <br />
       <Token type={SCISSORS} />
-      <br /><br />
+      <br />
+      <br />
       <Token type={LIZARD} />
-      <br /><br />
+      <br />
+      <br />
       <Token type={SPOCK} />
       <Modal
         isVisible={state.isRulesOpen}
