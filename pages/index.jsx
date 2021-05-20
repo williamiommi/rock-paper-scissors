@@ -25,21 +25,7 @@ export default function Home() {
           state.isClassicGame ? state.pointsGameClassic : state.pointsGameBonus
         }
       />
-      rock paper scissors
       <RulesBtn onClick={toggleModal} />
-      <Token type={ROCK} />
-      <br />
-      <br />
-      <Token type={PAPER} />
-      <br />
-      <br />
-      <Token type={SCISSORS} />
-      <br />
-      <br />
-      <Token type={LIZARD} />
-      <br />
-      <br />
-      <Token type={SPOCK} />
       <Modal
         isVisible={state.isRulesOpen}
         isClassicGame={state.isClassicGame}

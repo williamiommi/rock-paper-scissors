@@ -16,7 +16,7 @@ const ScoreBoard = ({ isClassicGame, points }) => {
       </section>
       <section
         data-testid="score"
-        className="flex flex-col justify-between pb-5 bg-grayLight rounded-md w-40 min-w-min self-stretch p-1"
+        className="flex flex-col justify-between pb-5 ml-2 bg-grayLight rounded-md w-40 min-w-min self-stretch p-1"
       >
         <span className="font-body text-lg text-ScoreText">SCORE</span>
         <span className="font-body text-5xl text-DarkText desktop:text-6xl">
