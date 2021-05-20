@@ -4,7 +4,7 @@ const GameSelected = ({ onSelectGame }) => {
   return (
     <div className="flex flex-col h-screen justify-center items-center text-center">
       <h1 className="font-body text-grayLight text-6xl">CHOOSE YOUR GAME</h1>
-      <div className="flex flex-col justify-between items-center mx-auto mt-10 space-y-5 mb-5 desktop:flex-row desktop:space-y-0 desktop:space-x-5">
+      <div className="flex flex-col justify-between items-center mx-auto mt-10 space-y-5 desktop:flex-row desktop:space-y-0 desktop:space-x-5">
         <GameBtn
           src="/images/logo.svg"
           alt="classic game"
