@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <div className="text-center">
       <ScoreBoard
-        isClassicGame={!state.isClassicGame}
+        isClassicGame={state.isClassicGame}
         points={
           state.isClassicGame ? state.pointsGameClassic : state.pointsGameBonus
         }
