@@ -7,6 +7,7 @@ module.exports = {
       body: ["Barlow Semi Condensed", "sans-serif"],
     },
     colors: {
+      transparent: "transparent",
       grayLight: "#f5f5f5",
       DarkText: "hsl(229, 25%, 31%)",
       ScoreText: "hsl(229, 64%, 46%)",

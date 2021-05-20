@@ -12,7 +12,11 @@ export default function Home() {
       <button type="button" onClick={toggleModal}>
         Open Modal
       </button>
-      <Modal isClassicGame={state.isClassicGame} onCloseModal={toggleModal} />
+      <Modal
+        isRulesOpen={state.isRulesOpen}
+        isClassicGame={state.isClassicGame}
+        onCloseModal={toggleModal}
+      />
     </div>
   );
 }
