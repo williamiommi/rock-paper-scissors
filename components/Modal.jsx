@@ -1,6 +1,4 @@
-import { memo, useCallback, useContext } from "react";
-import { AppContext } from "../lib/appContext";
-import { TOGGLE_MODAL } from "../lib/useAppReducer";
+import { memo, useEffect, useRef } from "react";
 
 const Modal = ({ isClassicGame, isVisible, onCloseModal }) => {
   const wrapperClasses = isVisible
@@ -9,6 +7,12 @@ const Modal = ({ isClassicGame, isVisible, onCloseModal }) => {
   const contentClasses = isVisible
     ? "desktop:scale-100 desktop:translate-y-0"
     : "desktop:scale-95 desktop:-translate-y-5";
+  const btnRef = useRef();
+  useEffect(() => {
+    if (isVisible) {
+      btnRef.current.focus();
+    }
+  }, [isVisible]);
   return (
     <div
       data-testid="wrapper"
@@ -30,7 +34,12 @@ const Modal = ({ isClassicGame, isVisible, onCloseModal }) => {
             />
           </section>
           <section className="desktop:w-1/12 desktop:flex desktop:justify-center desktop:items-center">
-            <button type="button" title="close" onClick={onCloseModal}>
+            <button
+              ref={btnRef}
+              type="button"
+              title="close"
+              onClick={onCloseModal}
+            >
               <img src="/images/icon-close.svg" alt="close icon" />
             </button>
           </section>
