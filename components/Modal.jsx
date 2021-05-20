@@ -2,23 +2,20 @@ import { memo, useCallback, useContext } from "react";
 import { AppContext } from "../lib/appContext";
 import { TOGGLE_MODAL } from "../lib/useAppReducer";
 
-const Modal = () => {
-  const {
-    state: { isClassicGame },
-    dispatch,
-  } = useContext(AppContext);
-  const closeModal = useCallback(() => dispatch(TOGGLE_MODAL), []);
+const Modal = ({ isClassicGame, onCloseModal }) => {
   return (
-    <div className="w-screen h-screen bg-grayLight flex flex-col justify-center items-center p-2">
-      <h3 className='font-body font-bold text-4xl text-DarkText'>RULES</h3>
-      <section className='my-32'>
+    <div className="w-screen h-screen bg-grayLight flex flex-col justify-center items-center p-2 desktop:flex-row desktop:flex-wrap desktop:max-w-md desktop:h-auto desktop:rounded-md desktop:p-10">
+      <h3 className="font-body font-bold text-4xl text-DarkText desktop:w-11/12 desktop:text-left">
+        RULES
+      </h3>
+      <section className="my-32 desktop:order-3 desktop:m-0 desktop:mt-5">
         <img
           src={`/images/image-rules${isClassicGame ? "" : "-bonus"}.svg`}
           alt={`${isClassicGame ? "classic" : "bonus"} rules`}
         />
       </section>
-      <section>
-        <button type="button" title="close" onClick={closeModal}>
+      <section className="desktop:w-1/12 desktop:flex desktop:justify-center desktop:items-center">
+        <button type="button" title="close" onClick={onCloseModal}>
           <img src="/images/icon-close.svg" alt="close icon" />
         </button>
       </section>
