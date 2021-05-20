@@ -4,7 +4,7 @@ import { TOGGLE_GAME, TOGGLE_MODAL } from "../lib/useAppReducer";
 import useLoadPoints from "../lib/useLoadPoints";
 import Modal from "../components/Modal";
 import RulesBtn from "../components/RulesBtn";
-import Token from "../components/Token";
+import GameSelector from "../components/GameSelector";
 
 import { LIZARD, PAPER, ROCK, SCISSORS, SPOCK } from "../lib/utils";
 import ScoreBoard from "../components/ScoreBoard";
@@ -15,22 +15,39 @@ export default function Home() {
     () => dispatch({ type: TOGGLE_MODAL }),
     [dispatch]
   );
+  const toggleGame = useCallback(
+    (payload) => dispatch({ type: TOGGLE_GAME, payload }),
+    [dispatch]
+  );
   // load initial points
   useLoadPoints();
   return (
     <div className="text-center">
-      <ScoreBoard
-        isClassicGame={state.isClassicGame}
-        points={
-          state.isClassicGame ? state.pointsGameClassic : state.pointsGameBonus
-        }
-      />
-      <RulesBtn onClick={toggleModal} />
-      <Modal
-        isVisible={state.isRulesOpen}
-        isClassicGame={state.isClassicGame}
-        onCloseModal={toggleModal}
-      />
+      {!state.isGameSelected && (
+        <GameSelector
+          isGameSelected={state.isGameSelected}
+          onSelectGame={toggleGame}
+        />
+      )}
+
+      {state.isGameSelected && (
+        <>
+          <ScoreBoard
+            isClassicGame={state.isClassicGame}
+            points={
+              state.isClassicGame
+                ? state.pointsGameClassic
+                : state.pointsGameBonus
+            }
+          />
+          <RulesBtn onClick={toggleModal} />
+          <Modal
+            isVisible={state.isRulesOpen}
+            isClassicGame={state.isClassicGame}
+            onCloseModal={toggleModal}
+          />
+        </>
+      )}
     </div>
   );
 }
