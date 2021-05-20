@@ -7,17 +7,19 @@ const Modal = ({ isClassicGame, isRulesOpen, onCloseModal }) => {
     ? "opacity-100 visible"
     : "opacity-0 invisible";
   return (
-    <div
-      className={`${wrapperClasses} flex absolute inset-0 justify-center items-center bg-grayLight desktop:bg-transparent`}
-    >
-      <div className="fixed w-screen h-screen bg-grayLight opacity-10 z-10" />
-      <Content />
+    <div className={`fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto bg-grayLight desktop:bg-opacity-10`}>
+      <div className='relative flex justify-center items-center min-h-screen w-auto desktop:max-w-md desktop:mx-auto'>
+        <Content
+          isClassicGame={isClassicGame}
+          onCloseModal={onCloseModal}
+        />
+      </div>
     </div>
   );
 };
 
 const Content = ({ isClassicGame, onCloseModal }) => (
-  <div className="flex flex-col justify-center items-center p-2 z-20 desktop:bg-grayLight desktop:flex-row desktop:flex-wrap desktop:max-w-md desktop:h-auto desktop:rounded-md desktop:p-10">
+  <div className="flex flex-col justify-center items-center p-2 z-20 bg-grayLight desktop:flex-row desktop:flex-wrap desktop:rounded-md desktop:p-10">
     <h3 className="font-body font-bold text-4xl text-DarkText desktop:w-11/12 desktop:text-left">
       RULES
     </h3>
