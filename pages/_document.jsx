@@ -18,7 +18,13 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="bg-DarkText text-base">
+        <body
+          className="font-body text-base h-screen bg-no-repeat"
+          style={{
+            background:
+              "radial-gradient(circle at center top, hsl(214, 47%, 23%), hsl(237, 49%, 15%))",
+          }}
+        >
           <Main />
           <NextScript />
         </body>
