@@ -1,10 +1,10 @@
 import { memo, useMemo } from "react";
 import { LIZARD, PAPER, ROCK, SCISSORS, SPOCK } from "../lib/utils";
 
-const Token = ({ type, isSmall, onClick }) => {
+const Token = ({ type, isSmall, onClick, className }) => {
   const size = isSmall ? "w-36 h-36" : "w-48 h-48";
   return (
-    <div className={`group ${size}`}>
+    <div className={`group ${size} ${className}`}>
       <button
         type="button"
         className={`flex justify-center items-center rounded-full w-full h-full border-b-8 ${type.bg} ${type.border}`}
