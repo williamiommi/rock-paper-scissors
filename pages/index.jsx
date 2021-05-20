@@ -13,7 +13,7 @@ export default function Home() {
         Open Modal
       </button>
       <Modal
-        isRulesOpen={state.isRulesOpen}
+        isVisible={state.isRulesOpen}
         isClassicGame={state.isClassicGame}
         onCloseModal={toggleModal}
       />
