@@ -5,6 +5,7 @@ import useLoadPoints from "../lib/useLoadPoints";
 import Modal from "../components/Modal";
 import RulesBtn from "../components/RulesBtn";
 import GameSelector from "../components/GameSelector";
+import Picker from "../components/Picker";
 
 import { LIZARD, PAPER, ROCK, SCISSORS, SPOCK } from "../lib/utils";
 import ScoreBoard from "../components/ScoreBoard";
@@ -22,7 +23,7 @@ export default function Home() {
   // load initial points
   useLoadPoints();
   return (
-    <div className="text-center">
+    <div className="pt-10">
       {!state.isGameSelected && (
         <GameSelector
           isGameSelected={state.isGameSelected}
@@ -40,7 +41,8 @@ export default function Home() {
                 : state.pointsGameBonus
             }
           />
-          <RulesBtn onClick={toggleModal} />
+          <Picker />
+          {/* <RulesBtn onClick={toggleModal} /> */}
           <Modal
             isVisible={state.isRulesOpen}
             isClassicGame={state.isClassicGame}

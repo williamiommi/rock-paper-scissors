@@ -4,7 +4,7 @@ const ScoreBoard = ({ isClassicGame, points }) => {
   return (
     <div
       data-testid="wrapper"
-      className="flex flex-row items-center justify-between border-4 border-grayLight border-opacity-40 rounded-md p-4 mx-5 mt-10 desktop:max-w-2xl desktop:mx-auto"
+      className="flex flex-row items-center justify-between border-4 border-grayLight border-opacity-40 rounded-md p-4 mx-5 desktop:max-w-2xl desktop:mx-auto"
     >
       <section>
         <img

@@ -2,8 +2,8 @@ import { memo } from "react";
 
 const GameSelected = ({ onSelectGame }) => {
   return (
-    <div className="flex flex-col mt-10">
-      <h1 className="text-grayLight text-6xl">CHOOSE YOUR GAME</h1>
+    <div className="flex flex-col items-center pt-10">
+      <h1 className="font-body text-grayLight text-6xl">CHOOSE YOUR GAME</h1>
       <div className="flex justify-between items-center w-1/5 mx-auto mt-10">
         <GameBtn
           src="/images/logo.svg"

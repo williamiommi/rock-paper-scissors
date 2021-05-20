@@ -8,7 +8,15 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
+      <Html
+        lang="en"
+        style={{
+          minHeight: "100vh",
+          backgroundRepeat: "no-repeat",
+          background:
+            "radial-gradient(circle at center top, hsl(214, 47%, 23%), hsl(237, 49%, 15%))",
+        }}
+      >
         <Head>
           <meta name="description" content="Rest Countries API" />
           <link rel="icon" href="/favicon.ico" />
@@ -18,13 +26,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body
-          className="font-body text-base h-screen bg-no-repeat"
-          style={{
-            background:
-              "radial-gradient(circle at center top, hsl(214, 47%, 23%), hsl(237, 49%, 15%))",
-          }}
-        >
+        <body>
           <Main />
           <NextScript />
         </body>
