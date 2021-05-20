@@ -25,7 +25,7 @@ export default function Home() {
   // load initial points
   useLoadPoints();
   return (
-    <div className="flex flex-col pt-10">
+    <div className="flex flex-col">
       {!state.isGameSelected && (
         <GameSelector
           isGameSelected={state.isGameSelected}
