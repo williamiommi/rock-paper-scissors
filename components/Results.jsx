@@ -16,12 +16,12 @@ const Results = ({ isClassicGame, userPick }) => {
       <div className="flex flex-row justify-center items-center text-center mt-16 order-1 desktop:order-2">
         <div className="flex w-1/2 justify-center items-center">
           <span className="transform scale-50 tablet:scale-75 desktop:scale-100">
-            <Token type={userPick} />
+            <Token type={userPick} isDisabled />
           </span>
         </div>
         <div className="flex w-1/2 justify-center items-center">
           <span className="transform scale-50 tablet:scale-75 desktop:scale-100">
-            <Token type={getHousePick(isClassicGame)} />
+            <Token type={getHousePick(isClassicGame)} isDisabled />
           </span>
         </div>
       </div>
