@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from "react";
-import { getHousePick, getWinner, WIN } from "../lib/utils";
+import { getHousePick, play, WIN } from "../lib/utils";
 import Token from "./Token";
 
 const Results = ({ isClassicGame, userPick, handleWin }) => {
@@ -7,7 +7,7 @@ const Results = ({ isClassicGame, userPick, handleWin }) => {
 
   useEffect(() => {
     if (housePick) {
-      const res = getWinner(userPick, housePick, isClassicGame);
+      const res = play(userPick, housePick, isClassicGame);
       if (res === WIN) handleWin();
     }
   }, [housePick]);
