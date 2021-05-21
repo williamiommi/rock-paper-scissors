@@ -13,6 +13,7 @@ module.exports = {
       DarkText: "hsl(229, 25%, 31%)",
       ScoreText: "hsl(229, 64%, 46%)",
       HeaderOutline: "hsl(217, 16%, 45%)",
+      emptyToken: '#192745',
       rock: {
         light: '#DF405B',
         dark: '#911B39',
