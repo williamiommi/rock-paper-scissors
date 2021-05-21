@@ -44,7 +44,7 @@ export default function Home() {
             }
           />
           <Picker isClassicGame={state.isClassicGame} />
-          <div className="flex flex-row justify-center space-x-5 pr-5 mb-10 desktop:justify-end">
+          <div className="flex flex-row justify-center space-x-5 pr-5 mb-10 desktop:justify-end desktop:fixed desktop:bottom-0 desktop:right-0">
             <Btn text="CHANGE GAME" onClick={resetGame} />
             <Btn text="RULES" onClick={toggleModal} />
           </div>
