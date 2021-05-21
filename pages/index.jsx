@@ -25,6 +25,7 @@ export default function Home() {
     userPick,
     handleWin,
     resetPoints,
+    playAgain,
   } = useFunctions();
   return (
     <div className="flex flex-col">
@@ -52,12 +53,13 @@ export default function Home() {
               isClassicGame={state.isClassicGame}
               userPick={state.userPick}
               handleWin={handleWin}
+              onPlayAgain={playAgain}
             />
           )}
           <div className="flex flex-col items-center justify-center space-y-5 w-52 mx-auto mb-10 desktop:w-auto desktop:flex-row desktop:justify-end desktop:space-y-0 desktop:space-x-5 desktop:pr-5 desktop:mx-0">
-            <Btn text="CHANGE GAME" onClick={resetGame} />
-            <Btn text="RESET POINTS" onClick={resetPoints} />
-            <Btn text="RULES" onClick={toggleModal} />
+            <Btn text="CHANGE GAME" onClick={resetGame} className="w-full desktop:w-auto" />
+            <Btn text="RESET POINTS" onClick={resetPoints} className="w-full desktop:w-auto" />
+            <Btn text="RULES" onClick={toggleModal} className="w-full desktop:w-auto" />
           </div>
           <Modal
             isVisible={state.isRulesOpen}
