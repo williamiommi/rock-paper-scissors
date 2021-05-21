@@ -16,29 +16,37 @@ const Results = ({ isClassicGame, userPick, handleWin, onPlayAgain }) => {
   }, [housePick]);
 
   return (
-    <div className={`flex flex-col mx-5 mb-20 desktop:mx-auto desktop:w-full ${result ? 'desktop:max-w-4xl' : 'desktop:max-w-2xl'}`}>
-      <div className="flex flex-row mx-auto w-full justify-between items-center mt-10 text-center order-2 desktop:order-1">
-        <h3 className="font-body text-white text-xl w-1/2 desktop:text-3xl">
-          YOU PICKED
-        </h3>
-        <h3 className="font-body text-white text-xl w-1/2 desktop:text-3xl">
-          THE HOUSE PICKED
-        </h3>
+    <div
+      className={`flex flex-row flex-wrap mx-5 mb-20 desktop:flex-nowrap desktop:mx-auto desktop:w-full ${
+        result ? "desktop:max-w-5xl" : "desktop:max-w-2xl"
+      }`}
+    >
+      <Column text="YOU PICKED" token={userPick} />
+      <Column
+        text="THE HOUSE PICKED"
+        token={housePick}
+        className="order-2 desktop:order-3"
+      />
+      <ResultAndRematch result={result} onClick={onPlayAgain} className='order-3 desktop:order-2 desktop:self-center' />
+    </div>
+  );
+};
+
+const Column = ({ text, token, className }) => {
+  return (
+    <div
+      className={`flex flex-col mx-auto mt-10 w-1/2 justify-between items-center text-center desktop:mt-16 ${
+        className || ""
+      }`}
+    >
+      <h3 className="font-body text-white text-xl desktop:text-3xl desktop:mb-10">
+        {text}
+      </h3>
+      <div className="flex justify-center items-center">
+        <span className="transform scale-50 tablet:scale-75 desktop:scale-100">
+          <Token type={token} isDisabled />
+        </span>
       </div>
-      <div className="flex flex-row justify-center items-center text-center mt-16 order-1 desktop:order-2">
-        <div className="flex w-1/2 justify-center items-center">
-          <span className="transform scale-50 tablet:scale-75 desktop:scale-100">
-            <Token type={userPick} isDisabled />
-          </span>
-        </div>
-        <ResultAndRematch result={result} className="hidden desktop:flex" onClick={onPlayAgain} />
-        <div className="flex w-1/2 justify-center items-center">
-          <span className="transform scale-50 tablet:scale-75 desktop:scale-100">
-            <Token type={housePick} isDisabled />
-          </span>
-        </div>
-      </div>
-      <ResultAndRematch result={result} className="flex order-3 mt-14 desktop:hidden" onClick={onPlayAgain} />
     </div>
   );
 };
@@ -46,13 +54,18 @@ const Results = ({ isClassicGame, userPick, handleWin, onPlayAgain }) => {
 const ResultAndRematch = ({ result, className, onClick }) => {
   if (!result) return null;
   return (
-    <div className={`flex-col w-full desktop:w-1/3 ${className || ''}`}>
+    <div className={`flex flex-col w-full desktop:w-1/3 ${className || ""}`}>
       <h3 className="font-body text-white text-center text-6xl">
-        {result === WIN && 'YOU WIN'}
-        {result === LOSE && 'YOU LOSE'}
+        {result === WIN && "YOU WIN"}
+        {result === LOSE && "YOU LOSE"}
         {result === TIE && `IT'S A TIE`}
       </h3>
-      <Btn text="PLAY AGAIN" className='w-60 mx-auto mt-10' onClick={onClick} isAlternative />
+      <Btn
+        text="PLAY AGAIN"
+        className="w-60 mx-auto mt-10"
+        onClick={onClick}
+        isAlternative
+      />
     </div>
   );
 };
