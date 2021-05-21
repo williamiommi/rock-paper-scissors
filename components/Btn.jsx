@@ -7,7 +7,7 @@ const Btn = ({ text, onClick }) => {
     <button
       type="button"
       onClick={onClick}
-      className="py-2 px-10 border transition-all duration-500 border-grayLight rounded-md text-grayLight font-body text-lg hover:bg-grayLight hover:text-DarkText"
+      className="py-2 px-10 border transition-colors duration-500 border-grayLight rounded-md text-grayLight font-body text-lg hover:bg-grayLight hover:text-DarkText"
     >
       {text}
     </button>

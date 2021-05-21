@@ -1,45 +1,31 @@
-import { useCallback, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../lib/appContext";
-import {
-  REGISTER_WIN,
-  RESET_GAME,
-  TOGGLE_GAME,
-  TOGGLE_MODAL,
-  USER_PICK,
-} from "../lib/useAppReducer";
+
+// import hooks
 import useLoadPoints from "../lib/useLoadPoints";
+import useFunctions from "../lib/useFunctions";
+
+// import components
 import Modal from "../components/Modal";
 import Btn from "../components/Btn";
 import GameSelector from "../components/GameSelector";
 import Picker from "../components/Picker";
 import ScoreBoard from "../components/ScoreBoard";
 import Results from "../components/Results";
-import { setWin } from "../lib/utils";
 
 export default function Home() {
-  const { state, dispatch } = useContext(AppContext);
-  const resetGame = useCallback(
-    () => dispatch({ type: RESET_GAME }),
-    [dispatch]
-  );
-  const toggleModal = useCallback(
-    () => dispatch({ type: TOGGLE_MODAL }),
-    [dispatch]
-  );
-  const toggleGame = useCallback(
-    (payload) => dispatch({ type: TOGGLE_GAME, payload }),
-    [dispatch]
-  );
-  const userPick = useCallback(
-    (payload) => dispatch({ type: USER_PICK, payload }),
-    [dispatch]
-  );
-  const handleWin = useCallback(() => {
-    setWin(state.isClassicGame);
-    dispatch({ type: REGISTER_WIN });
-  }, [dispatch]);
+  const { state } = useContext(AppContext);
   // load initial points
   useLoadPoints();
+  // getFunctions
+  const {
+    resetGame,
+    toggleModal,
+    toggleGame,
+    userPick,
+    handleWin,
+    resetPoints,
+  } = useFunctions();
   return (
     <div className="flex flex-col">
       {!state.isGameSelected && (
@@ -68,10 +54,11 @@ export default function Home() {
               handleWin={handleWin}
             />
           )}
-          {/* <div className="flex flex-row justify-center space-x-5 mb-10 desktop:justify-end desktop:pr-5">
+          <div className="flex flex-col items-center justify-center space-y-5 w-52 mx-auto mb-10 desktop:w-auto desktop:flex-row desktop:justify-end desktop:space-y-0 desktop:space-x-5 desktop:pr-5 desktop:mx-0">
             <Btn text="CHANGE GAME" onClick={resetGame} />
+            <Btn text="RESET POINTS" onClick={resetPoints} />
             <Btn text="RULES" onClick={toggleModal} />
-          </div> */}
+          </div>
           <Modal
             isVisible={state.isRulesOpen}
             isClassicGame={state.isClassicGame}
