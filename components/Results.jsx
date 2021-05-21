@@ -1,7 +1,8 @@
 import { memo } from "react";
+import { getHousePick } from "../lib/utils";
 import Token from "./Token";
 
-const Results = ({ userPick, housePick }) => {
+const Results = ({ isClassicGame, userPick }) => {
   return (
     <div className="flex flex-col mx-5 mb-20 desktop:mx-auto desktop:w-full desktop:max-w-2xl">
       <div className="flex flex-row mx-auto w-full justify-between items-center mt-16 text-center order-2 desktop:order-1">
@@ -20,7 +21,7 @@ const Results = ({ userPick, housePick }) => {
         </div>
         <div className="flex w-1/2 justify-center items-center">
           <span className="transform scale-50 tablet:scale-75 desktop:scale-100">
-            <Token type={housePick} />
+            <Token type={getHousePick(isClassicGame)} />
           </span>
         </div>
       </div>

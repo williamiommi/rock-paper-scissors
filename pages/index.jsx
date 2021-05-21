@@ -56,7 +56,7 @@ export default function Home() {
           {!state.userPick ? (
             <Picker isClassicGame={state.isClassicGame} onClick={userPick} />
           ) : (
-            <Results userPick={state.userPick} />
+            <Results isClassicGame={state.isClassicGame} userPick={state.userPick} />
           )}
           {/* <div className="flex flex-row justify-center space-x-5 mb-10 desktop:justify-end desktop:pr-5">
             <Btn text="CHANGE GAME" onClick={resetGame} />
