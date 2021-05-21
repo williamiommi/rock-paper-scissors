@@ -3,7 +3,7 @@ import { LIZARD, PAPER, ROCK, SCISSORS, SPOCK } from "../lib/utils";
 
 const Token = ({ type, isSmall, onClick, className }) => {
   const size = isSmall ? "w-40 h-40" : "w-48 h-48";
-  if (!type) return <div className={`${size} bg-emptyToken rounded-full`}/>
+  if (!type) return <div className={`${size} ${className || ''} bg-emptyToken bg-opacity-80 rounded-full`}/>
   return (
     <div className={`group ${size} ${className || ''}`}>
       <button
