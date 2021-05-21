@@ -58,10 +58,10 @@ export default function Home() {
           ) : (
             <Results userPick={state.userPick} />
           )}
-          <div className="flex flex-row justify-center space-x-5 mb-10 desktop:justify-end desktop:pr-5">
+          {/* <div className="flex flex-row justify-center space-x-5 mb-10 desktop:justify-end desktop:pr-5">
             <Btn text="CHANGE GAME" onClick={resetGame} />
             <Btn text="RULES" onClick={toggleModal} />
-          </div>
+          </div> */}
           <Modal
             isVisible={state.isRulesOpen}
             isClassicGame={state.isClassicGame}
