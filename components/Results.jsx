@@ -2,9 +2,10 @@ import { memo, useEffect, useState } from "react";
 import { getHousePick, LOSE, play, TIE, WIN } from "../lib/utils";
 import Token from "./Token";
 import Btn from "./Btn";
+import TokensWheel from "./TokensWheel";
 
 const Results = ({ isClassicGame, userPick, handleWin, onPlayAgain }) => {
-  const [housePick] = useState(getHousePick(isClassicGame));
+  const [housePick, setHousePick] = useState();
   const [result, setResult] = useState(null);
 
   useEffect(() => {
@@ -21,18 +22,25 @@ const Results = ({ isClassicGame, userPick, handleWin, onPlayAgain }) => {
         result ? "desktop:max-w-5xl" : "desktop:max-w-2xl"
       }`}
     >
-      <Column text="YOU PICKED" token={userPick} />
-      <Column
-        text="THE HOUSE PICKED"
-        token={housePick}
-        className="order-2 desktop:order-3"
+      <Column text="YOU PICKED">
+        <Token type={userPick} isDisabled />
+      </Column>
+      <Column text="THE HOUSE PICKED" className="order-2 desktop:order-3">
+        <TokensWheel
+          isClassicGame={isClassicGame}
+          handleHousePick={setHousePick}
+        />
+      </Column>
+      <ResultAndRematch
+        result={result}
+        onClick={onPlayAgain}
+        className="order-3 desktop:order-2 desktop:self-center"
       />
-      <ResultAndRematch result={result} onClick={onPlayAgain} className='order-3 desktop:order-2 desktop:self-center' />
     </div>
   );
 };
 
-const Column = ({ text, token, className }) => {
+const Column = ({ text, children, className }) => {
   return (
     <div
       className={`flex flex-col mx-auto mt-10 w-1/2 justify-between items-center text-center desktop:mt-16 ${
@@ -44,7 +52,7 @@ const Column = ({ text, token, className }) => {
       </h3>
       <div className="flex justify-center items-center">
         <span className="transform scale-50 tablet:scale-75 desktop:scale-100">
-          <Token type={token} isDisabled />
+          {children}
         </span>
       </div>
     </div>
