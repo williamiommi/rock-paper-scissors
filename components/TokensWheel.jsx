@@ -1,20 +1,20 @@
 import { memo, useEffect, useRef, useState } from "react";
 import {
-  LIZARD,
-  PAPER,
-  ROCK,
-  SCISSORS,
-  SPOCK,
   getHousePick,
   spinWheel,
   wheelTiming,
+  ROCK_PAPER_SCISSORS_WHEEL,
+  ROCK_PAPER_SCISSORS_LIZARD_SPOCK_WHEEL,
 } from "../lib/utils";
-import useTimeout from '../lib/useTimeout';
+import useTimeout from "../lib/useTimeout";
 // import components
 import Token from "./Token";
 
 const TokensWheel = ({ isClassicGame, handleHousePick }) => {
   const wrapperRef = useRef();
+  const [wheel] = useState(
+    isClassicGame ? ROCK_PAPER_SCISSORS_WHEEL : ROCK_PAPER_SCISSORS_LIZARD_SPOCK_WHEEL
+  );
   const [housePick] = useState(getHousePick(isClassicGame));
   useTimeout(() => {
     handleHousePick(housePick);
@@ -28,33 +28,14 @@ const TokensWheel = ({ isClassicGame, handleHousePick }) => {
         ref={wrapperRef}
         className="w-[576px] h-[576px] absolute transition-all -left-full"
       >
-        <TokenWrapper type={ROCK} />
-        <TokenWrapper type={PAPER} className="rotate-[60deg]" />
-        <TokenWrapper type={SCISSORS} className="rotate-[120deg]" />
-        {isClassicGame ? (
-          <>
-            <TokenWrapper type={ROCK} className="rotate-[180deg]" />
-            <TokenWrapper type={PAPER} className="rotate-[240deg]" />
-            <TokenWrapper type={SCISSORS} className="rotate-[300deg]" />
-          </>
-        ) : (
-          <>
-            <TokenWrapper type={LIZARD} className="rotate-[180deg]" />
-            <TokenWrapper type={SPOCK} className="rotate-[240deg]" />
-            <TokenWrapper type={SCISSORS} className="rotate-[300deg]" />
-          </>
-        )}
+        {wheel.map((item, index) => (
+          <div
+            className={`w-[192px] h-[576px] absolute transform left-1/2 -translate-x-1/2 rotate-[${index * 60}deg]`}
+          >
+            <Token type={item} isDisabled />
+          </div>
+        ))}
       </div>
-    </div>
-  );
-};
-
-const TokenWrapper = ({ type, className }) => {
-  return (
-    <div
-      className={`w-[192px] h-[576px] absolute transform left-1/2 -translate-x-1/2 ${className}`}
-    >
-      <Token type={type} />
     </div>
   );
 };
